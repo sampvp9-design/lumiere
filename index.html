@@ -1,0 +1,251 @@
+<!DOCTYPE html>
+<html lang="pt-BR" class="scroll-smooth">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Lumière | Salão de Beleza Premium</title>
+    <meta name="description" content="Salão de beleza premium com serviços de alto nível. Agende seu horário e realce sua beleza.">
+    
+    <!-- Tailwind CSS -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;500;600&family=Playfair+Display:ital,wght@0,400;0,600;0,700;1,400&display=swap" rel="stylesheet">
+    
+    <!-- Font Awesome -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        brand: {
+                            rose: '#E6C6CB',
+                            rosegold: '#B76E79',
+                            gold: '#C5A059',
+                            dark: '#1A1A1A',
+                            light: '#FAFAFA',
+                        }
+                    },
+                    fontFamily: {
+                        sans: ['Montserrat', 'sans-serif'],
+                        serif: ['Playfair Display', 'serif'],
+                    },
+                    boxShadow: {
+                        'soft': '0 10px 40px -10px rgba(0,0,0,0.08)',
+                        'glow': '0 0 20px rgba(183, 110, 121, 0.4)',
+                    }
+                }
+            }
+        }
+    </script>
+
+    <style>
+        body { background-color: #FAFAFA; color: #1A1A1A; overflow-x: hidden; }
+        #loader { transition: opacity 0.6s ease-out; }
+        .reveal { opacity: 0; transform: translateY(30px); transition: all 0.8s ease-out; }
+        .reveal.active { opacity: 1; transform: translateY(0); }
+        .parallax-bg {
+            background-attachment: fixed;
+            background-position: center;
+            background-repeat: no-repeat;
+            background-size: cover;
+        }
+        .img-hover-zoom { transition: transform 0.6s ease; }
+        .group:hover .img-hover-zoom { transform: scale(1.1); }
+        .pulse-ring { animation: pulse 2s infinite; }
+        @keyframes pulse {
+            0% { transform: scale(0.95); box-shadow: 0 0 0 0 rgba(37, 211, 102, 0.7); }
+            70% { transform: scale(1); box-shadow: 0 0 0 15px rgba(37, 211, 102, 0); }
+            100% { transform: scale(0.95); box-shadow: 0 0 0 0 rgba(37, 211, 102, 0); }
+        }
+        .nav-scrolled { background: rgba(255, 255, 255, 0.95); backdrop-filter: blur(8px); box-shadow: 0 2px 20px rgba(0,0,0,0.1); }
+        .image-overlay { background: linear-gradient(to top, rgba(0,0,0,0.7) 0%, transparent 100%); }
+    </style>
+</head>
+<body class="font-sans antialiased">
+
+    <!-- Preloader -->
+    <div id="loader" class="fixed inset-0 z-[100] bg-brand-light flex items-center justify-center">
+        <div class="text-center">
+            <div class="w-12 h-12 border-4 border-brand-rose border-t-brand-rosegold rounded-full animate-spin mx-auto mb-4"></div>
+            <h2 class="font-serif text-xl tracking-[0.2em] text-brand-dark">LUMIÈRE</h2>
+        </div>
+    </div>
+
+    <!-- Navbar -->
+    <nav id="navbar" class="fixed w-full z-50 transition-all duration-500 py-6 px-6 md:px-12">
+        <div class="max-w-7xl mx-auto flex justify-between items-center">
+            <a href="#" class="font-serif text-2xl font-bold tracking-widest text-white transition-colors" id="nav-logo">LUMIÈRE</a>
+            <div class="hidden md:flex space-x-8 items-center">
+                <a href="#sobre" class="text-xs uppercase tracking-widest text-white nav-link hover:text-brand-rose">Sobre</a>
+                <a href="#servicos" class="text-xs uppercase tracking-widest text-white nav-link hover:text-brand-rose">Serviços</a>
+                <a href="#galeria" class="text-xs uppercase tracking-widest text-white nav-link hover:text-brand-rose">Portfólio</a>
+                <a href="https://wa.me/5511999999999" target="_blank" class="bg-brand-rosegold text-white px-6 py-2 rounded-full text-xs uppercase tracking-widest hover:bg-brand-dark transition-all">Agendar</a>
+            </div>
+            <button id="mobile-btn" class="md:hidden text-white text-2xl"><i class="fas fa-bars"></i></button>
+        </div>
+    </nav>
+
+    <!-- Hero Section -->
+    <header class="relative h-screen flex items-center justify-center overflow-hidden">
+        <div class="absolute inset-0 parallax-bg" style="background-image: url('https://images.unsplash.com/photo-1560066984-138dadb4c035?q=80&w=1920&auto=format&fit=crop');">
+            <div class="absolute inset-0 bg-black/50"></div>
+        </div>
+        <div class="relative z-10 text-center px-6 reveal">
+            <span class="text-brand-rose uppercase tracking-[0.4em] text-xs mb-4 block">Luxo e Sofisticação</span>
+            <h1 class="font-serif text-5xl md:text-8xl text-white mb-6 leading-tight">Sua beleza em <br><span class="italic text-brand-rose">evidência</span></h1>
+            <p class="text-gray-200 text-sm md:text-lg mb-10 max-w-xl mx-auto font-light tracking-wide">Tratamentos exclusivos e atendimento premium para mulheres que não abrem mão da excelência.</p>
+            <a href="https://wa.me/5511999999999" target="_blank" class="inline-block bg-brand-rosegold text-white px-10 py-4 rounded-full text-xs uppercase tracking-[0.2em] font-semibold hover:bg-white hover:text-brand-dark transition-all shadow-glow">Agendar Agora</a>
+        </div>
+    </header>
+
+    <!-- About Section -->
+    <section id="sobre" class="py-24 bg-brand-light">
+        <div class="max-w-7xl mx-auto px-6 grid md:grid-cols-2 gap-16 items-center">
+            <div class="relative reveal">
+                <div class="absolute -inset-4 border border-brand-gold/20 rounded-2xl"></div>
+                <!-- Imagem atualizada com link de alta estabilidade -->
+                <img src="https://images.unsplash.com/photo-1522337660859-02fbefca4702?q=80&w=800&auto=format&fit=crop" class="relative rounded-xl shadow-soft w-full h-[500px] object-cover" alt="Ambiente do Salão">
+            </div>
+            <div class="reveal">
+                <span class="text-brand-gold uppercase tracking-widest text-xs font-bold mb-4 block">Nossa História</span>
+                <h2 class="font-serif text-4xl text-brand-dark mb-6">Excelência no cuidado feminino.</h2>
+                <p class="text-gray-600 leading-relaxed mb-6 font-light">O Lumière nasceu da paixão por realçar a identidade de cada cliente através de técnicas exclusivas e produtos de classe mundial. Nosso espaço foi projetado para ser o seu refúgio particular.</p>
+                <div class="grid grid-cols-2 gap-8 border-t border-brand-rose/30 pt-8">
+                    <div>
+                        <p class="font-serif text-3xl text-brand-rosegold">12</p>
+                        <p class="text-[10px] uppercase tracking-widest text-gray-400">Anos de Mercado</p>
+                    </div>
+                    <div>
+                        <p class="font-serif text-3xl text-brand-rosegold">8k+</p>
+                        <p class="text-[10px] uppercase tracking-widest text-gray-400">Vidas Transformadas</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Services Section -->
+    <section id="servicos" class="py-24 bg-white">
+        <div class="max-w-7xl mx-auto px-6 text-center reveal">
+            <h2 class="font-serif text-4xl text-brand-dark mb-16">Serviços Premium</h2>
+            <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
+                <div class="p-8 border border-gray-100 rounded-2xl hover:shadow-soft transition-all group">
+                    <i class="fas fa-magic text-3xl text-brand-rosegold mb-6"></i>
+                    <h3 class="font-serif text-xl mb-3">Mechas</h3>
+                    <p class="text-xs text-gray-400 font-light leading-loose">Técnicas de iluminação personalizadas para um loiro saudável e vibrante.</p>
+                </div>
+                <div class="p-8 border border-gray-100 rounded-2xl hover:shadow-soft transition-all group">
+                    <i class="fas fa-gem text-3xl text-brand-rosegold mb-6"></i>
+                    <h3 class="font-serif text-xl mb-3">Estética</h3>
+                    <p class="text-xs text-gray-400 font-light leading-loose">Protocolos faciais e corporais com tecnologia de ponta.</p>
+                </div>
+                <div class="p-8 border border-gray-100 rounded-2xl hover:shadow-soft transition-all group">
+                    <i class="fas fa-feather text-3xl text-brand-rosegold mb-6"></i>
+                    <h3 class="font-serif text-xl mb-3">Cílios</h3>
+                    <p class="text-xs text-gray-400 font-light leading-loose">Extensões fio a fio para um olhar marcante e natural.</p>
+                </div>
+                <div class="p-8 border border-gray-100 rounded-2xl hover:shadow-soft transition-all group">
+                    <i class="fas fa-paint-brush text-3xl text-brand-rosegold mb-6"></i>
+                    <h3 class="font-serif text-xl mb-3">Nails</h3>
+                    <p class="text-xs text-gray-400 font-light leading-loose">Blindagem, alongamento e esmaltação em gel de alta durabilidade.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Portfolio Section (3 Imagens) -->
+    <section id="galeria" class="py-24 bg-brand-light">
+        <div class="max-w-7xl mx-auto px-6">
+            <div class="text-center mb-16 reveal">
+                <h2 class="font-serif text-4xl text-brand-dark">Portfólio</h2>
+                <p class="text-xs text-gray-400 uppercase tracking-widest mt-4">Resultados que inspiram</p>
+            </div>
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
+                <!-- Foto 1 -->
+                <div class="group relative overflow-hidden rounded-2xl aspect-[4/5] reveal">
+                    <img src="https://images.unsplash.com/photo-1562322140-8baeececf3df?q=80&w=800&auto=format&fit=crop" class="w-full h-full object-cover img-hover-zoom" alt="Trabalho de Cabelo">
+                    <div class="absolute inset-0 image-overlay opacity-0 group-hover:opacity-100 transition-opacity flex items-end p-8">
+                        <span class="text-white font-serif text-lg">Loiro Signature</span>
+                    </div>
+                </div>
+                <!-- Foto 2 -->
+                <div class="group relative overflow-hidden rounded-2xl aspect-[4/5] reveal" style="transition-delay: 0.1s;">
+                    <img src="https://images.unsplash.com/photo-1516975080664-ed2fc6a32937?q=80&w=800&auto=format&fit=crop" class="w-full h-full object-cover img-hover-zoom" alt="Maquilhagem">
+                    <div class="absolute inset-0 image-overlay opacity-0 group-hover:opacity-100 transition-opacity flex items-end p-8">
+                        <span class="text-white font-serif text-lg">Maquilhagem Editorial</span>
+                    </div>
+                </div>
+                <!-- Foto 3 -->
+                <div class="group relative overflow-hidden rounded-xl aspect-[4/5] reveal" style="transition-delay: 0.2s;">
+                    <img src="https://images.unsplash.com/photo-1604654894610-df63bc536371?q=80&w=800&auto=format&fit=crop" class="w-full h-full object-cover img-hover-zoom" alt="Unhas">
+                    <div class="absolute inset-0 image-overlay opacity-0 group-hover:opacity-100 transition-opacity flex items-end p-8">
+                        <span class="text-white font-serif text-xl">Unhas Minimalistas</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="bg-brand-dark text-white py-16">
+        <div class="max-w-7xl mx-auto px-6 text-center">
+            <h2 class="font-serif text-3xl tracking-widest mb-8">LUMIÈRE</h2>
+            <div class="flex justify-center space-x-6 mb-8">
+                <a href="#" class="text-gray-400 hover:text-brand-rose transition-colors"><i class="fab fa-instagram text-xl"></i></a>
+                <a href="#" class="text-gray-400 hover:text-brand-rose transition-colors"><i class="fab fa-facebook-f text-xl"></i></a>
+                <a href="#" class="text-gray-400 hover:text-brand-rose transition-colors"><i class="fab fa-pinterest text-xl"></i></a>
+            </div>
+            <p class="text-[10px] uppercase tracking-[0.3em] text-gray-500">&copy; 2026 Lumière Salão de Beleza. Todos os direitos reservados.</p>
+        </div>
+    </footer>
+
+    <!-- WhatsApp Button -->
+    <a href="https://wa.me/5511999999999" target="_blank" class="fixed bottom-6 right-6 z-50 w-14 h-14 bg-green-500 text-white rounded-full flex items-center justify-center text-2xl shadow-lg pulse-ring">
+        <i class="fab fa-whatsapp"></i>
+    </a>
+
+    <script>
+        window.addEventListener('load', () => {
+            const loader = document.getElementById('loader');
+            loader.style.opacity = '0';
+            setTimeout(() => loader.style.display = 'none', 600);
+            handleReveal();
+        });
+
+        function handleReveal() {
+            const reveals = document.querySelectorAll('.reveal');
+            reveals.forEach(el => {
+                const rect = el.getBoundingClientRect();
+                if (rect.top < window.innerHeight - 50) el.classList.add('active');
+            });
+        }
+
+        window.addEventListener('scroll', () => {
+            handleReveal();
+            const nav = document.getElementById('navbar');
+            const logo = document.getElementById('nav-logo');
+            const links = document.querySelectorAll('.nav-link');
+            const btn = document.getElementById('mobile-btn');
+
+            if (window.scrollY > 50) {
+                nav.classList.add('nav-scrolled', 'py-4');
+                nav.classList.remove('py-6');
+                logo.classList.replace('text-white', 'text-brand-dark');
+                btn.classList.replace('text-white', 'text-brand-dark');
+                links.forEach(l => l.classList.replace('text-white', 'text-brand-dark'));
+            } else {
+                nav.classList.remove('nav-scrolled', 'py-4');
+                nav.classList.add('py-6');
+                logo.classList.replace('text-brand-dark', 'text-white');
+                btn.classList.replace('text-brand-dark', 'text-white');
+                links.forEach(l => l.classList.replace('text-brand-dark', 'text-white'));
+            }
+        });
+    </script>
+</body>
+</html>
